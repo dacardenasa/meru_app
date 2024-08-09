@@ -1,11 +1,12 @@
 import { Button } from "@/components";
+import React from "react";
 
 type ModalContentProps = {
   handleToggleModal: () => void;
   handleDelete: () => void;
 };
 
-export const ModalContent = ({
+const _ModalContent = ({
   handleToggleModal,
   handleDelete
 }: ModalContentProps) => {
@@ -27,3 +28,5 @@ export const ModalContent = ({
     </div>
   );
 };
+
+export default React.memo(_ModalContent);

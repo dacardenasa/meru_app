@@ -1,6 +1,10 @@
+import React from "react";
+
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
-import { RowContent } from "../RowContent";
 import { CustomLink } from "@/components";
+
+import RowContent from "../RowContent";
+
 
 type ProductCardProps = {
   description: string;
@@ -9,7 +13,7 @@ type ProductCardProps = {
   price: number;
 };
 
-const ProductCard = ({ description, id, name, price }: ProductCardProps) => {
+const _ProductCard = ({ description, id, name, price }: ProductCardProps) => {
   return (
     <div className="flex h-fit flex-col p-4 rounded-lg bg-white text-black">
       <RowContent label="Name:" value={name} />
@@ -24,4 +28,4 @@ const ProductCard = ({ description, id, name, price }: ProductCardProps) => {
   );
 };
 
-export default ProductCard;
+export default React.memo(_ProductCard);

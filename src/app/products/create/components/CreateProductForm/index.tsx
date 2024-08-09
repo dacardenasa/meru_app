@@ -6,10 +6,10 @@ import { ProductForm } from "@/components";
 import { EMPTY_FORM_STATE } from "@/app/products/lib/schemas";
 import { useToastMessage } from "@/hooks";
 
-import { FormButtons } from "../FormButtons";
 import { createProduct } from "../../lib/actions";
+import FormButtons from "../FormButtons";
 
-export default function CreateProductForm() {
+const CreateProductForm = () => {
   const [state, dispatch] = useFormState(createProduct, EMPTY_FORM_STATE);
   useToastMessage(state);
 
@@ -22,4 +22,6 @@ export default function CreateProductForm() {
       <FormButtons />
     </ProductForm>
   );
-}
+};
+
+export default CreateProductForm;

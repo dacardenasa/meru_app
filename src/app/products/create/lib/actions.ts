@@ -2,24 +2,19 @@
 
 import { revalidatePath } from "next/cache";
 
-import { headers } from '@/services'
-import {
-  CreateProductSchema,
-} from "./schemas";
+import { headers } from "@/services";
 import { ProductFormState } from "../../models";
-import { fromErrorToFormState, toFormState } from "../../lib/schemas";
+import {
+  checkFormData,
+  fromErrorToFormState,
+  ProductSchema,
+  toFormState
+} from "../../lib/schemas";
 
-export async function createProduct(
-  _: ProductFormState,
-  formData: FormData
-) {
-  const { success, error, data } = CreateProductSchema.safeParse({
-    description: formData.get("description"),
-    name: formData.get("name"),
-    price: formData.get("price")
-  });
+export async function createProduct(_: ProductFormState, formData: FormData) {
+  const { error, data } = checkFormData(formData);
 
-  if (!success) {
+  if (error) {
     return fromErrorToFormState(error);
   }
 
@@ -34,6 +29,6 @@ export async function createProduct(
   } catch (error) {
     fromErrorToFormState(error);
   }
-  revalidatePath("/products", "page");
+  revalidatePath("/products");
   return toFormState("SUCCESS", "Product created successfully!");
 }

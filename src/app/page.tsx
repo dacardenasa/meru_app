@@ -5,6 +5,7 @@ import { CustomLink } from "@/components";
 
 export const metadata: Metadata = {
   title: 'Home',
+  description: "Page to show main content of the application"
 };
 
 export default async function Home() {

@@ -6,7 +6,8 @@ import UpdateProductForm from "./components/UpdateProductForm";
 import { getProductDetail } from "./lib/actions";
 
 export const metadata: Metadata = {
-  title: "Product detail form"
+  title: "Product detail form",
+  description: "Page to show user form to update and delete product"
 };
 
 type ProductDetailProps = {

@@ -12,15 +12,15 @@ const useToastMessage = (formState: ProductFormState) => {
   useEffect(() => {
     if (showToast) {
       if (formState.status === "ERROR") {
-        toast.error(formState?.message ?? "");
+        toast.error(formState.message);
       } else {
-        toast.success(formState?.message ?? "");
+        toast.success(formState.message);
         router.push("/products");
       }
 
       prevTimestamp.current = formState.timestamp;
     }
-  }, [formState, showToast]);
+  }, [formState, router, showToast]);
 };
 
 export { useToastMessage };

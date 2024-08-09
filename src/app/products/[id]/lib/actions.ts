@@ -2,12 +2,14 @@
 
 import { revalidatePath } from "next/cache";
 
-import { headers } from '@/services'
-import {
-  UpdateProductSchema
-} from "./schemas";
+import { headers } from "@/services";
 import { ProductFormState, ProductModel } from "../../models";
-import { fromErrorToFormState, toFormState } from "../../lib/schemas";
+import {
+  checkFormData,
+  fromErrorToFormState,
+  ProductSchema,
+  toFormState
+} from "../../lib/schemas";
 
 export async function getProductDetail(id: number) {
   try {
@@ -26,13 +28,9 @@ export async function updateProduct(
   _: ProductFormState,
   formData: FormData
 ) {
-  const { success, error, data } = UpdateProductSchema.safeParse({
-    description: formData.get("description"),
-    name: formData.get("name"),
-    price: formData.get("price")
-  });
+  const { error, data } = checkFormData(formData);
 
-  if (!success) {
+  if (error) {
     return fromErrorToFormState(error);
   }
 
@@ -42,7 +40,8 @@ export async function updateProduct(
     await fetch(`${process.env.API_URL}/products/${id}`, {
       method: "PUT",
       body: JSON.stringify({ description, name, price }),
-      headers
+      headers,
+      cache: "no-store"
     });
   } catch (error) {
     fromErrorToFormState(error);

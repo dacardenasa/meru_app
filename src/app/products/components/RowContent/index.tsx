@@ -5,7 +5,7 @@ type RowProps = {
   value: string;
 };
 
-export const RowContent = ({ label, value }: RowProps) => {
+const RowContent = ({ label, value }: RowProps) => {
   return (
     <div className="flex flex-col">
       <p className="font-bold">{label}</p>
@@ -15,3 +15,5 @@ export const RowContent = ({ label, value }: RowProps) => {
     </div>
   );
 };
+
+export default React.memo(RowContent);

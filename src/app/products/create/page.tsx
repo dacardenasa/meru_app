@@ -5,6 +5,7 @@ import CreateProductForm from "./components/CreateProductForm";
 
 export const metadata: Metadata = {
   title: 'Product create form',
+  description: "Page to show user form to create product"
 };
 
 export default async function ProductDetail() {
