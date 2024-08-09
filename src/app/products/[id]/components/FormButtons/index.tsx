@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { Button, CustomLink } from "@/components";
 import { CheckCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
 

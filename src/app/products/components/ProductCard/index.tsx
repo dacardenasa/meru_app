@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { RowContent } from "../RowContent";
 import { CustomLink } from "@/components";
