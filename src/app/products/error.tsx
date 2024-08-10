@@ -1,7 +1,7 @@
 "use client";
 
-import { ErrorLayout } from "@/components";
 import { useEffect } from "react";
+import { ErrorLayout } from "@/components";
 
 type ErrorProps = {
   error: Error & { digest?: string };

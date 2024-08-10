@@ -1,13 +1,11 @@
+import { Suspense } from "react";
+import { Metadata } from "next";
+
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 
 import { Container, CustomLink } from "@/components";
 
-import { ProductModel } from "./models";
-import { getProducts } from "./lib/actions";
-
-import { Metadata } from "next";
 import ProductsList from "./components/ProductsList";
-import { Suspense } from "react";
 import ProductsLoader from "./components/ProductsLoader";
 
 export const metadata: Metadata = {
@@ -16,7 +14,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Products() {
-  const products: ProductModel[] = await getProducts();
   return (
     <Container>
       <p className="text-white font-bold text-4xl mb-4">Registered Products</p>
